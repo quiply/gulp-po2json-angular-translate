@@ -1,23 +1,23 @@
 {
-  "name": "gulp-po2json-angular-translate",
+  "name": "gulp-po2json-angular-translate-qy",
   "description": "gulp plugin to convert po to angangular-translate format",
-  "version": "0.0.3",
-  "homepage": "https://github.com/rocwong/gulp-po2json-angular-translate",
+  "version": "0.0.5",
+  "homepage": "https://github.com/rocwong/gulp-po2json-angular-translate-qy",
   "author": {
     "name": "rocwong",
     "email": "admin@rocwong.com"
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/rocwong/gulp-po2json-angular-translate.git"
+    "url": "git://github.com/rocwong/gulp-po2json-angular-translate-qy.git"
   },
   "bugs": {
-    "url": "https://github.com/rocwong/gulp-po2json-angular-translate/issues"
+    "url": "https://github.com/rocwong/gulp-po2json-angular-translate-qy/issues"
   },
   "licenses": [
     {
       "type": "MIT",
-      "url": "https://github.com/rocwong/gulp-po2json-angular-translate/blob/master/LICENSE"
+      "url": "https://github.com/rocwong/gulp-po2json-angular-translate-qy/blob/master/LICENSE"
     }
   ],
   "main": "index.js",

@@ -1,7 +1,7 @@
 /*
- * gulp-po2json-angular-translate
- * https://github.com/rocwong/gulp-po2json-angular-translate
- * 
+ * gulp-po2json-angular-translate-qy
+ * https://github.com/rocwong/gulp-po2json-angular-translate-qy
+ *
  * based on grunt-po2json-angular-translate v0.0.3
  * https://github.com/angular-translate/grunt-po2json-angular-translate
  *
@@ -16,7 +16,7 @@ var _ = require('lodash');
 var po = require('node-po');
 var path = require('path');
 
-var PLUGIN_NAME = 'gulp-po2json-angular-translate';
+var PLUGIN_NAME = 'gulp-po2json-angular-translate-qy';
 
 function po2Json(options) {
   options = _.extend({
@@ -28,16 +28,16 @@ function po2Json(options) {
     enableAltPlaceholders: true,
     placeholderStructure: ['{','}']
   }, options);
-  
-  
+
+
   var replacePlaceholder = function(string, openingMark, closingMark,altEnabled){
     if (closingMark !== undefined &&
       altEnabled &&
       string.indexOf(closingMark !== -1)){
-      if (string.indexOf(openingMark) !== -1){
+      // if (string.indexOf(openingMark) !== -1){ // Quiply: removed, because openingMark can already be a regex
         var regOpening = new RegExp(openingMark,'g');
         string = string.replace(regOpening,'{{');
-      }
+      // }
       if (string.indexOf(closingMark) !== -1){
         var regClosing = new RegExp(closingMark,'g');
         string = string.replace(regClosing,'}}');
@@ -54,7 +54,7 @@ function po2Json(options) {
     //}
     return string;
   };
-  
+
 	return through.obj(function(file, enc, cb) {
     if (file.isNull()) {
       this.push(file);
@@ -65,12 +65,12 @@ function po2Json(options) {
       this.emit('error', new pluginError(PLUGIN_NAME, 'Streaming not supported'));
       return cb();
     }
-    
+
     var singleFile = false;
-    var singleFileStrings = {};  
+    var singleFileStrings = {};
     var catalog = po.parse(file.contents.toString());
     var strings = {};
-  
+
 
     for (var i = 0; i < catalog.items.length; i++) {
         var item = catalog.items[i];
@@ -141,10 +141,10 @@ function po2Json(options) {
     var dirname = path.dirname(file.path);
     var basename = path.basename(file.path, '.po');
     file.path = path.join(dirname, basename + '.json');
-    
+
     this.push(file);
     cb();
-    
+
 	});
 }
 
